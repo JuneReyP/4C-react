@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .app-container{
+            width: 350px;
+        }
+        .calculator{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border: 1px solid blue;
+        }
+        .display{
+            grid-column-start: 1;
+            grid-column-end: 5;
+            text-align: end;
+            height: 50px;
+            padding-left: 10px;
+            padding-top: 5px;
+            font-size: 30px;
+        }
+        button{
+            height: 50px;
+            border: 1px solid black;
+        }
+
+        button.operator{
+            background-color: darkgray;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        // Intro
+        // const hello = React.createElement("h1", {}, "Hello React!");
+        // const hello = <h4>Hello React!</h4>;
+        // const hello = (
+        //     <div>
+        //         <h1>Hello React!</h1>
+        //         <p>Lorem ipsum dolor sit.</p>
+        //     </div>
+        // )
+        // ReactDOM.render(hello, document.getElementById("app"));
+
+        // ################################################################################
+        // Functional Components
+            // function sample(){
+            //     return <h1>Hello Juan!</h1>;
+            // }
+
+        // const arrow = () => <h1>Hello Juan! Arrow Function</h1>;
+
+        // ReactDOM.render(arrow(), document.getElementById("app"));
+
+//===============================================================================================
+// Intro to Props in React / component
+// const Hello = (props) => (
+//     <div>
+//             <h2>Hello, my name is {props.name}, I am {props.age} yrs old.</h2>
+//             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum.</p>
+//             <a href="http://" target="_blank" rel="noopener noreferrer">Sample Link</a>
+//     </div>
+// );
+// ReactDOM.render(<Hello name="Juan" age={16}/>, document.getElementById("app"));
+
+// #################################################################################################
+//Callback Function
+
+// Parent Component
+function Calculator(){
+    return(
+        <div className="calculator">
+            <div className="display">0</div>
+
+            <CalcButton value={7}/>
+            <CalcButton value={8}/>
+            <CalcButton value={9}/>
+            <CalcButton className="operator" value="+"/>
+
+            <CalcButton value={4}/>
+            <CalcButton value={5}/>
+            <CalcButton value={6}/>
+            <CalcButton className="operator" value="-"/>
+
+            <CalcButton value={1}/>
+            <CalcButton value={2}/>
+            <CalcButton value={3}/>
+            <CalcButton className="operator" value="*"/>
+
+            <CalcButton value="C"/>
+            <CalcButton value={0}/>
+            <CalcButton className="operator" value="="/>
+            <CalcButton className="operator" value="/"/>
+        </div>
+    )
+}
+
+// child component
+function CalcButton(props){
+    return(
+        <button className={props.className}>{props.value}</button>
+    )
+}
+ReactDOM.render(<div className="app-container"><Calculator/></div>, document.getElementById("app"));
+    </script>
+</body>
+</html>
